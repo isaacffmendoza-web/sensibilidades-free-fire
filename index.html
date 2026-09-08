@@ -306,17 +306,28 @@
         .hidden {
             display: none;
         }
+
+        .badge-active {
+            background: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔴 Generador de Sensibilidades</h1>
+            <h1>🔴 Generador de Sensibilidades <span class="badge-active">✓ ACTIVO</span></h1>
             <p>Free Fire - Calibrado para Fluidez y Estabilidad (Max: 200)</p>
         </div>
 
         <div class="info-box">
-            ℹ️ Sensibilidades calibradas para máxima FLUIDEZ, ESTABILIDAD y PRECISIÓN. Valores optimizados hasta 200 (máximo del juego).
+            ℹ️ <strong>✓ GENERADOR ACTIVADO</strong> - Sensibilidades calibradas para máxima FLUIDEZ, ESTABILIDAD y PRECISIÓN. Valores optimizados hasta 200 (máximo del juego).
         </div>
 
         <form id="sensibilityForm">
@@ -750,6 +761,13 @@ https://github.com/isaacffmendoza-web/sensibilidades-free-fire
                     document.getElementById('dpiValue').value = config.dpiValue;
                 }
             }
+        });
+
+        // Mensaje de activación al cargar
+        window.addEventListener('load', function() {
+            console.log('✓ Generador de Sensibilidades ACTIVADO');
+            console.log('✓ Sistema calibrado para máxima fluidez y estabilidad');
+            console.log('✓ Máximo: 200 - Sensibilidades optimizadas');
         });
     </script>
 </body>
