@@ -26,7 +26,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             padding: 30px;
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
         }
 
@@ -176,8 +176,14 @@
 
         .sensibility-value {
             color: #d9534f;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
+        }
+
+        .sensibility-description {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
         }
 
         .copy-btn {
@@ -201,17 +207,116 @@
             font-size: 12px;
             color: #1565c0;
         }
+
+        .stability-indicator {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .stability-high {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .stability-medium {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .sensitivity-range {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fce4ec;
+            border-left: 4px solid #c2185b;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #880e4f;
+        }
+
+        .dpi-adjustment {
+            background: #f3e5f5;
+            border-left: 4px solid #7b1fa2;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #4a148c;
+            margin-top: 8px;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #b71c1c;
+            margin-top: 8px;
+        }
+
+        .calibration-tips {
+            background: #e8f5e9;
+            border-left: 4px solid #388e3c;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .calibration-tips strong {
+            color: #1b5e20;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .calibration-tips ul {
+            margin-left: 20px;
+            font-size: 12px;
+            color: #2e7d32;
+        }
+
+        .calibration-tips li {
+            margin-bottom: 5px;
+        }
+
+        .tabla-sensibilidades {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .tabla-sensibilidades th,
+        .tabla-sensibilidades td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .tabla-sensibilidades th {
+            background: #667eea;
+            color: white;
+        }
+
+        .tabla-sensibilidades tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🔴 Generador de Sensibilidades</h1>
-            <p>Free Fire - Pega todo rojo</p>
+            <p>Free Fire - Calibrado para Fluidez y Estabilidad (Max: 200)</p>
         </div>
 
         <div class="info-box">
-            ℹ️ Selecciona tu plataforma, arma, nivel de sensibilidad y preferencias para generar la configuración óptima.
+            ℹ️ Sensibilidades calibradas para máxima FLUIDEZ, ESTABILIDAD y PRECISIÓN. Valores optimizados hasta 200 (máximo del juego).
         </div>
 
         <form id="sensibilityForm">
@@ -230,15 +335,15 @@
                 <label>🔫 Arma</label>
                 <select id="weapon" required>
                     <option value="">Selecciona una arma</option>
-                    <option value="ak47">AK47</option>
-                    <option value="m14">M14</option>
-                    <option value="scar">SCAR</option>
-                    <option value="mp40">MP40</option>
-                    <option value="shotgun">Escopeta</option>
-                    <option value="sniper">Francotirador</option>
-                    <option value="awm">AWM</option>
-                    <option value="groza">GROZA</option>
-                    <option value="deagle">Deagle</option>
+                    <option value="ak47">AK47 - AR (Retroceso Alto)</option>
+                    <option value="m14">M14 - AR (Retroceso Medio-Alto)</option>
+                    <option value="scar">SCAR - AR (Retroceso Balanceado)</option>
+                    <option value="mp40">MP40 - SMG (Retroceso Bajo)</option>
+                    <option value="shotgun">Escopeta - Shotgun (Alcance Corto)</option>
+                    <option value="sniper">Francotirador - Sniper (Precisión Pura)</option>
+                    <option value="awm">AWM - Sniper (One-Shot)</option>
+                    <option value="groza">GROZA - AR/SMG (Híbrido)</option>
+                    <option value="deagle">Deagle - Pistola (Precisión)</option>
                 </select>
             </div>
 
@@ -248,15 +353,15 @@
                 <div class="radio-group">
                     <div class="radio-item">
                         <input type="radio" id="sensLow" name="sensitivity" value="low" required>
-                        <label for="sensLow">Baja</label>
+                        <label for="sensLow">Baja 🎯</label>
                     </div>
                     <div class="radio-item">
                         <input type="radio" id="sensMedium" name="sensitivity" value="medium">
-                        <label for="sensMedium">Media</label>
+                        <label for="sensMedium">Media ⚡</label>
                     </div>
                     <div class="radio-item">
                         <input type="radio" id="sensHigh" name="sensitivity" value="high">
-                        <label for="sensHigh">Alta</label>
+                        <label for="sensHigh">Alta 🚀</label>
                     </div>
                 </div>
             </div>
@@ -265,23 +370,23 @@
             <div class="form-group">
                 <div class="checkbox-group">
                     <input type="checkbox" id="useDpi">
-                    <label for="useDpi">¿Usar DPI?</label>
+                    <label for="useDpi">¿Usar DPI? (Ajuste Avanzado)</label>
                 </div>
             </div>
 
             <!-- DPI Input -->
             <div class="form-group" id="dpiGroup" style="display: none;">
-                <label>🎯 Valor DPI</label>
-                <input type="number" id="dpiValue" placeholder="Ej: 400, 800, 1600" min="100" max="3200">
+                <label>🎯 Valor DPI (Rango: 400-3200)</label>
+                <input type="number" id="dpiValue" placeholder="Ej: 400, 800, 1600, 3200" min="400" max="3200" step="100">
             </div>
 
             <!-- Botón Generar -->
-            <button type="submit" class="btn">⚙️ Generar Sensibilidades</button>
+            <button type="submit" class="btn">⚙️ Generar Sensibilidades Calibradas</button>
         </form>
 
         <!-- Resultado -->
         <div id="result" class="result">
-            <h2>📊 Tu Configuración Óptima</h2>
+            <h2>📊 Tu Configuración Optimizada</h2>
             <div id="resultContent"></div>
             <button class="btn copy-btn" onclick="copiarResultado()">📋 Copiar Configuración</button>
         </div>
@@ -291,68 +396,92 @@
         // Mostrar/ocultar input DPI
         document.getElementById('useDpi').addEventListener('change', function() {
             document.getElementById('dpiGroup').style.display = this.checked ? 'block' : 'none';
+            if (!this.checked) {
+                document.getElementById('dpiValue').value = '';
+            }
         });
 
-        // Datos de sensibilidades por arma y nivel
+        // Datos de sensibilidades calibradas - MÁXIMO 200, FLUIDAS Y ESTABLES
         const sensibilityData = {
             ak47: {
-                low: { android: 70, iphone: 65 },
-                medium: { android: 80, iphone: 75 },
-                high: { android: 90, iphone: 85 }
+                // AK47: Retroceso ALTO - Necesita sensibilidad MÁS BAJA para control
+                low: { android: 85, iphone: 80, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 110, iphone: 105, stability: "Alta", fluidity: "Buena" },
+                high: { android: 140, iphone: 135, stability: "Media", fluidity: "Rápida" }
             },
             m14: {
-                low: { android: 75, iphone: 70 },
-                medium: { android: 85, iphone: 80 },
-                high: { android: 95, iphone: 90 }
+                // M14: Retroceso MEDIO-ALTO
+                low: { android: 90, iphone: 85, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 120, iphone: 115, stability: "Alta", fluidity: "Buena" },
+                high: { android: 155, iphone: 150, stability: "Media", fluidity: "Rápida" }
             },
             scar: {
-                low: { android: 68, iphone: 63 },
-                medium: { android: 78, iphone: 73 },
-                high: { android: 88, iphone: 83 }
+                // SCAR: Retroceso BALANCEADO - El más versátil
+                low: { android: 88, iphone: 83, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 115, iphone: 110, stability: "Alta", fluidity: "Buena" },
+                high: { android: 145, iphone: 140, stability: "Media", fluidity: "Rápida" }
             },
             mp40: {
-                low: { android: 60, iphone: 55 },
-                medium: { android: 70, iphone: 65 },
-                high: { android: 80, iphone: 75 }
+                // MP40: Retroceso BAJO - Puede permitir sens más alta
+                low: { android: 75, iphone: 70, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 100, iphone: 95, stability: "Muy Alta", fluidity: "Excelente" },
+                high: { android: 130, iphone: 125, stability: "Alta", fluidity: "Rápida" }
             },
             shotgun: {
-                low: { android: 50, iphone: 45 },
-                medium: { android: 60, iphone: 55 },
-                high: { android: 70, iphone: 65 }
+                // Escopeta: Alcance CORTO - Sens alta pero controlada
+                low: { android: 70, iphone: 65, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 95, iphone: 90, stability: "Muy Alta", fluidity: "Excelente" },
+                high: { android: 125, iphone: 120, stability: "Alta", fluidity: "Muy Rápida" }
             },
             sniper: {
-                low: { android: 85, iphone: 80 },
-                medium: { android: 92, iphone: 87 },
-                high: { android: 98, iphone: 93 }
+                // Francotirador: PRECISIÓN PURA - Baja sensibilidad siempre
+                low: { android: 105, iphone: 100, stability: "Perfecta", fluidity: "Precisa" },
+                medium: { android: 135, iphone: 130, stability: "Muy Alta", fluidity: "Precisa" },
+                high: { android: 165, iphone: 160, stability: "Alta", fluidity: "Rápida" }
             },
             awm: {
-                low: { android: 88, iphone: 83 },
-                medium: { android: 95, iphone: 90 },
-                high: { android: 100, iphone: 95 }
+                // AWM: One-Shot - Máxima precisión
+                low: { android: 110, iphone: 105, stability: "Perfecta", fluidity: "Precisa" },
+                medium: { android: 145, iphone: 140, stability: "Muy Alta", fluidity: "Precisa" },
+                high: { android: 175, iphone: 170, stability: "Alta", fluidity: "Rápida" }
             },
             groza: {
-                low: { android: 65, iphone: 60 },
-                medium: { android: 75, iphone: 70 },
-                high: { android: 85, iphone: 80 }
+                // GROZA: Híbrido AR/SMG - Versátil
+                low: { android: 82, iphone: 77, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 108, iphone: 103, stability: "Alta", fluidity: "Buena" },
+                high: { android: 138, iphone: 133, stability: "Media", fluidity: "Rápida" }
             },
             deagle: {
-                low: { android: 55, iphone: 50 },
-                medium: { android: 65, iphone: 60 },
-                high: { android: 75, iphone: 70 }
+                // Deagle: Precisión - Sem muy precisa
+                low: { android: 80, iphone: 75, stability: "Muy Alta", fluidity: "Excelente" },
+                medium: { android: 110, iphone: 105, stability: "Muy Alta", fluidity: "Excelente" },
+                high: { android: 140, iphone: 135, stability: "Alta", fluidity: "Rápida" }
             }
         };
 
         // Nombres de armas en español
         const weaponNames = {
-            ak47: 'AK47',
-            m14: 'M14',
-            scar: 'SCAR',
-            mp40: 'MP40',
+            ak47: 'AK47 (AR)',
+            m14: 'M14 (AR)',
+            scar: 'SCAR (AR)',
+            mp40: 'MP40 (SMG)',
             shotgun: 'Escopeta',
             sniper: 'Francotirador',
             awm: 'AWM',
-            groza: 'GROZA',
+            groza: 'GROZA (Híbrido)',
             deagle: 'Deagle'
+        };
+
+        const weaponTypes = {
+            ak47: 'Fusil de Asalto (Alto Retroceso)',
+            m14: 'Fusil de Asalto (Retroceso Medio-Alto)',
+            scar: 'Fusil de Asalto (Retroceso Balanceado)',
+            mp40: 'Subfusil (Retroceso Bajo)',
+            shotgun: 'Escopeta (Alcance Corto)',
+            sniper: 'Francotirador (Precisión Pura)',
+            awm: 'Francotirador (One-Shot)',
+            groza: 'Híbrido AR/SMG',
+            deagle: 'Pistola (Precisión)'
         };
 
         // Formulario submit
@@ -373,42 +502,82 @@
                 return;
             }
 
-            const baseValue = sensibilityData[weapon][sensitivity][platform];
+            const baseData = sensibilityData[weapon][sensitivity];
+            let finalValue = baseData[platform];
             
-            // Ajustar según DPI
-            let finalValue = baseValue;
-            let dpiInfo = '';
-            
-            if (useDpi && dpiValue) {
-                const dpiAdjustment = (dpiValue - 400) / 100; // Ajuste proporcional
-                finalValue = Math.max(1, Math.min(100, baseValue - (dpiAdjustment * 2)));
-                dpiInfo = ` (DPI: ${dpiValue})`;
+            // Validar que no exceda 200
+            if (finalValue > 200) {
+                finalValue = 200;
             }
 
-            // Generar recomendaciones adicionales
+            let dpiInfo = '';
+            let dpiAdjustedValue = finalValue;
+            
+            if (useDpi && dpiValue) {
+                // Ajuste DPI: valores más altos de DPI = sensibilidad más baja
+                const dpiBase = 400;
+                const dpiRatio = dpiValue / dpiBase;
+                dpiAdjustedValue = Math.round(finalValue / (dpiRatio * 0.8));
+                
+                // Asegurar que esté en rango válido (1-200)
+                dpiAdjustedValue = Math.max(1, Math.min(200, dpiAdjustedValue));
+                dpiInfo = ` (con DPI: ${dpiValue})`;
+            }
+
             const platformName = platform === 'android' ? '📱 Android' : '🍎 iPhone';
-            const sensitivityName = sensitivity === 'low' ? 'Baja 🎯' : sensitivity === 'medium' ? 'Media ⚡' : 'Alta 🚀';
+            const sensitivityName = sensitivity === 'low' ? 'Baja 🎯 (Control Máximo)' : sensitivity === 'medium' ? 'Media ⚡ (Equilibrio)' : 'Alta 🚀 (Velocidad)';
 
             let resultHTML = `
                 <div class="sensibility-item">
-                    <strong>Plataforma:</strong>
+                    <strong>📱 Plataforma:</strong>
                     ${platformName}
                 </div>
                 <div class="sensibility-item">
-                    <strong>Arma:</strong>
+                    <strong>🔫 Arma:</strong>
                     ${weaponNames[weapon]}
+                    <div class="sensibility-description">${weaponTypes[weapon]}</div>
                 </div>
                 <div class="sensibility-item">
-                    <strong>Sensibilidad Base:</strong>
+                    <strong>⚡ Perfil:</strong>
                     ${sensitivityName}
                 </div>
-                <div class="sensibility-item">
-                    <strong>🎯 Sensibilidad Recomendada:</strong>
-                    <div class="sensibility-value">${Math.round(finalValue)}${dpiInfo}</div>
+                <div class="sensibility-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                    <strong style="color: white;">🎯 SENSIBILIDAD RECOMENDADA (Calibrada):</strong>
+                    <div class="sensibility-value" style="color: #FFD700;">${dpiAdjustedValue}${dpiInfo}</div>
+                    <div class="sensibility-description" style="color: #E0E0E0;">
+                        ✓ Máximo Juego: 200 | ✓ Rango Óptimo: ${Math.round(finalValue * 0.8)} - ${finalValue}
+                    </div>
+                </div>
+
+                <div class="stability-indicator stability-${baseData.stability === 'Perfecta' || baseData.stability === 'Muy Alta' ? 'high' : 'medium'}">
+                    📊 ESTABILIDAD: ${baseData.stability} | FLUIDEZ: ${baseData.fluidity}
                 </div>
             `;
 
-            // Agregar configuraciones alternas
+            // Mostrar rango de valores seguros
+            const minSafe = Math.round(finalValue * 0.85);
+            const maxSafe = finalValue;
+            resultHTML += `
+                <div class="sensitivity-range">
+                    <strong>🔒 Rango de Valores Estables:</strong>
+                    <br>Mínimo: ${minSafe} | Máximo: ${maxSafe}
+                    <br><small>Usa valores dentro de este rango para máxima estabilidad</small>
+                </div>
+            `;
+
+            // Información de ajuste con DPI
+            if (useDpi && dpiValue) {
+                const dpiAdjustmentPercent = Math.round(((dpiAdjustedValue - finalValue) / finalValue) * 100);
+                resultHTML += `
+                    <div class="dpi-adjustment">
+                        <strong>🎮 Ajuste por DPI (${dpiValue}):</strong>
+                        <br>Valor base: ${finalValue} → Valor ajustado: ${dpiAdjustedValue}
+                        <br>Cambio: ${dpiAdjustmentPercent > 0 ? '+' : ''}${dpiAdjustmentPercent}%
+                    </div>
+                `;
+            }
+
+            // Comparativa con otras plataformas
             const otherPlatform = platform === 'android' ? 'iphone' : 'android';
             const otherValue = sensibilityData[weapon][sensitivity][otherPlatform];
             const otherPlatformName = otherPlatform === 'android' ? '📱 Android' : '🍎 iPhone';
@@ -416,18 +585,26 @@
             resultHTML += `
                 <div class="sensibility-item" style="background: #fff3cd; border-left: 4px solid #ffc107;">
                     <strong>💡 Recomendación para ${otherPlatformName}:</strong>
-                    <div class="sensibility-value" style="color: #ff9800;">${Math.round(otherValue)}</div>
+                    <div class="sensibility-value" style="color: #ff9800;">${otherValue}</div>
                 </div>
             `;
 
-            // Tips según sensibilidad
+            // Tips de calibración
             const tips = getTips(sensitivity, weapon, platform);
             resultHTML += `
-                <div class="sensibility-item" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
-                    <strong>💪 Tips para mejor puntería:</strong>
-                    <ul style="margin-left: 20px; margin-top: 8px;">
-                        ${tips.map(tip => `<li style="font-size: 12px; margin-bottom: 4px;">${tip}</li>`).join('')}
+                <div class="calibration-tips">
+                    <strong>🎓 PASOS PARA CALIBRACIÓN PERFECTA:</strong>
+                    <ul>
+                        ${tips.map(tip => `<li>${tip}</li>`).join('')}
                     </ul>
+                </div>
+            `;
+
+            // Advertencia importante
+            resultHTML += `
+                <div class="warning-box">
+                    ⚠️ <strong>IMPORTANTE:</strong> Estas sensibilidades están calibradas para FLUIDEZ y ESTABILIDAD. 
+                    Prueba en Training Ground antes de usarlas en partidas competitivas.
                 </div>
             `;
 
@@ -436,54 +613,126 @@
 
             // Guardar en localStorage
             localStorage.setItem('lastConfig', JSON.stringify({
-                platform, weapon, sensitivity, useDpi, dpiValue, finalValue
+                platform, weapon, sensitivity, useDpi, dpiValue, finalValue: dpiAdjustedValue
             }));
         }
 
         function getTips(sensitivity, weapon, platform) {
-            const tips = {
-                low: [
-                    '✓ Ideal para disparos lejanos y francotiradores',
-                    '✓ Mejor control de retroceso',
-                    '✓ Practica movimientos suaves',
-                    '✓ Calibra en Training Ground primero'
+            const generalTips = [
+                '✓ Abre Training Ground y practica 5-10 minutos',
+                '✓ Intenta hacer headshots a objetivos estacionarios',
+                '✓ Luego practica con enemigos en movimiento',
+                '✓ Si es muy rápido/lento, ajusta ±5 valores',
+                '✓ Espera 2-3 días para acostumbrarte completamente'
+            ];
+
+            const weaponSpecificTips = {
+                ak47: [
+                    '✓ AK47 tiene mucho retroceso - usa baja sensibilidad',
+                    '✓ Apunta al torso y deja que el retroceso suba a la cabeza',
+                    '✓ En distancia media, burst fire para mejor control',
+                    '✓ Practica la compensación del retroceso'
                 ],
-                medium: [
-                    '✓ Equilibrio entre velocidad y precisión',
-                    '✓ Bueno para combate medio-corto',
-                    '✓ Requiere entrenamiento regular',
-                    '✓ Ideal para juego competitivo'
+                m14: [
+                    '✓ M14: Retroceso predecible - semiauto poderoso',
+                    '✓ Perfecto para medium range engagements',
+                    '✓ Cada disparo requiere re-aim preciso',
+                    '✓ Mantén la sensibilidad estable'
                 ],
-                high: [
-                    '✓ Máxima velocidad de apuntamiento',
-                    '✓ Excelente para combates cercanos',
-                    '✓ Requiere buena fluidez y reflejos',
-                    '✓ Practica constantemente para mejores resultados'
+                scar: [
+                    '✓ SCAR es versátil - funciona en cualquier rango',
+                    '✓ Retroceso balanceado - buen arma para aprender',
+                    '✓ Usa para practicar diferentes distancias',
+                    '✓ Ideal para jugadores consistentes'
+                ],
+                mp40: [
+                    '✓ MP40: Baja sensibilidad incluso con high sens',
+                    '✓ Excelente para CQC (combate cerrado)',
+                    '✓ Mantén los movimientos cortos y rápidos',
+                    '✓ Practica tracking a corta distancia'
+                ],
+                shotgun: [
+                    '✓ Escopeta: One-shot lethality en corto alcance',
+                    '✓ Posicionate correctamente - no depende tanto de sens',
+                    '✓ Practica el pre-aim en esquinas',
+                    '✓ Usa para gatillar combates en tu favor'
+                ],
+                sniper: [
+                    '✓ Francotirador: Precisión = sensibilidad BAJA siempre',
+                    '✓ Ajusta micro-movimientos para headshots',
+                    '✓ Practica flick shots en Training',
+                    '✓ Pre-aim posiciones comunes del enemigo'
+                ],
+                awm: [
+                    '✓ AWM: One-shot a cualquier rango - máxima precisión',
+                    '✓ Cada fallo es crítico - necesitas control absoluto',
+                    '✓ Practica 10+ minutos diarios',
+                    '✓ Domina antes de usar en competencia'
+                ],
+                groza: [
+                    '✓ GROZA: Híbrido versátil - función como AR',
+                    '✓ Retroceso bajo comparado a otros ARs',
+                    '✓ Usa en rangos medios-cortos',
+                    '✓ Perfecto para adapterlo rápidamente'
+                ],
+                deagle: [
+                    '✓ Deagle: Arma de precisión - baja sensibilidad',
+                    '✓ Cada disparo es crítico',
+                    '✓ Practica el timing entre disparos',
+                    '✓ Excelente para pulir puntería'
                 ]
             };
 
-            return tips[sensitivity] || tips.medium;
+            return weaponSpecificTips[weapon] || generalTips;
         }
 
         function copiarResultado() {
             const platform = document.getElementById('platform').value;
             const weapon = document.getElementById('weapon').value;
             const sensitivity = document.querySelector('input[name="sensitivity"]:checked').value;
-            const finalValue = Math.round(sensibilityData[weapon][sensitivity][platform]);
+            const useDpi = document.getElementById('useDpi').checked;
+            const dpiValue = document.getElementById('dpiValue').value;
+            
+            const baseData = sensibilityData[weapon][sensitivity];
+            let finalValue = baseData[platform];
+            if (finalValue > 200) finalValue = 200;
+
+            let dpiAdjustedValue = finalValue;
+            if (useDpi && dpiValue) {
+                const dpiBase = 400;
+                const dpiRatio = dpiValue / dpiBase;
+                dpiAdjustedValue = Math.round(finalValue / (dpiRatio * 0.8));
+                dpiAdjustedValue = Math.max(1, Math.min(200, dpiAdjustedValue));
+            }
+
+            const platformName = platform === 'android' ? 'Android' : 'iPhone';
 
             const texto = `
-🔴 CONFIGURACIÓN FREE FIRE
+🔴 CONFIGURACIÓN FREE FIRE - CALIBRADA PARA FLUIDEZ Y ESTABILIDAD
 
-📱 Plataforma: ${platform === 'android' ? 'Android' : 'iPhone'}
+📱 Plataforma: ${platformName}
 🔫 Arma: ${weaponNames[weapon]}
-⚡ Sensibilidad: ${sensitivity}
-🎯 Valor: ${finalValue}
+⚡ Sensibilidad: ${sensitivity.charAt(0).toUpperCase() + sensitivity.slice(1)}
+🎯 Valor Recomendado: ${dpiAdjustedValue}
+📊 Estabilidad: ${baseData.stability}
+🌊 Fluidez: ${baseData.fluidity}
+${useDpi ? `🎮 DPI: ${dpiValue}` : ''}
 
-Generado con: Generador de Sensibilidades Free Fire
+⚠️ MÁXIMO PERMITIDO EN JUEGO: 200
+
+PASOS PARA CALIBRAR:
+1. Ve a Training Ground
+2. Aplica la sensibilidad sugerida
+3. Practica 5-10 minutos
+4. Si es necesario, ajusta ±5 valores
+5. Espera 2-3 días para acostumbrarte
+
+Generador de Sensibilidades Free Fire
+https://github.com/isaacffmendoza-web/sensibilidades-free-fire
             `;
 
             navigator.clipboard.writeText(texto).then(() => {
-                alert('✓ Configuración copiada al portapapeles');
+                alert('✓ Configuración copiada al portapapeles (Max: 200)');
             });
         }
 
