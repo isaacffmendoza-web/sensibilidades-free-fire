@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Sensibilidades Free Fire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        select, input[type="radio"] {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .radio-item label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .sensibility-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .sensibility-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sensibility-value {
+            color: #d9534f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .copy-btn {
+            background: #5cb85c;
+            padding: 8px 12px;
+            font-size: 12px;
+            margin-top: 10px;
+            width: auto;
+        }
+
+        .copy-btn:hover {
+            background: #4cae4c;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔴 Generador de Sensibilidades</h1>
+            <p>Free Fire - Pega todo rojo</p>
+        </div>
+
+        <div class="info-box">
+            ℹ️ Selecciona tu plataforma, arma, nivel de sensibilidad y preferencias para generar la configuración óptima.
+        </div>
+
+        <form id="sensibilityForm">
+            <!-- Plataforma -->
+            <div class="form-group">
+                <label>📱 Plataforma</label>
+                <select id="platform" required>
+                    <option value="">Selecciona una plataforma</option>
+                    <option value="android">Android</option>
+                    <option value="iphone">iPhone</option>
+                </select>
+            </div>
+
+            <!-- Arma -->
+            <div class="form-group">
+                <label>🔫 Arma</label>
+                <select id="weapon" required>
+                    <option value="">Selecciona una arma</option>
+                    <option value="ak47">AK47</option>
+                    <option value="m14">M14</option>
+                    <option value="scar">SCAR</option>
+                    <option value="mp40">MP40</option>
+                    <option value="shotgun">Escopeta</option>
+                    <option value="sniper">Francotirador</option>
+                    <option value="awm">AWM</option>
+                    <option value="groza">GROZA</option>
+                    <option value="deagle">Deagle</option>
+                </select>
+            </div>
+
+            <!-- Nivel de Sensibilidad -->
+            <div class="form-group">
+                <label>⚡ Nivel de Sensibilidad</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="sensLow" name="sensitivity" value="low" required>
+                        <label for="sensLow">Baja</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="sensMedium" name="sensitivity" value="medium">
+                        <label for="sensMedium">Media</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="sensHigh" name="sensitivity" value="high">
+                        <label for="sensHigh">Alta</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DPI -->
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="useDpi">
+                    <label for="useDpi">¿Usar DPI?</label>
+                </div>
+            </div>
+
+            <!-- DPI Input -->
+            <div class="form-group" id="dpiGroup" style="display: none;">
+                <label>🎯 Valor DPI</label>
+                <input type="number" id="dpiValue" placeholder="Ej: 400, 800, 1600" min="100" max="3200">
+            </div>
+
+            <!-- Botón Generar -->
+            <button type="submit" class="btn">⚙️ Generar Sensibilidades</button>
+        </form>
+
+        <!-- Resultado -->
+        <div id="result" class="result">
+            <h2>📊 Tu Configuración Óptima</h2>
+            <div id="resultContent"></div>
+            <button class="btn copy-btn" onclick="copiarResultado()">📋 Copiar Configuración</button>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar/ocultar input DPI
+        document.getElementById('useDpi').addEventListener('change', function() {
+            document.getElementById('dpiGroup').style.display = this.checked ? 'block' : 'none';
+        });
+
+        // Datos de sensibilidades por arma y nivel
+        const sensibilityData = {
+            ak47: {
+                low: { android: 70, iphone: 65 },
+                medium: { android: 80, iphone: 75 },
+                high: { android: 90, iphone: 85 }
+            },
+            m14: {
+                low: { android: 75, iphone: 70 },
+                medium: { android: 85, iphone: 80 },
+                high: { android: 95, iphone: 90 }
+            },
+            scar: {
+                low: { android: 68, iphone: 63 },
+                medium: { android: 78, iphone: 73 },
+                high: { android: 88, iphone: 83 }
+            },
+            mp40: {
+                low: { android: 60, iphone: 55 },
+                medium: { android: 70, iphone: 65 },
+                high: { android: 80, iphone: 75 }
+            },
+            shotgun: {
+                low: { android: 50, iphone: 45 },
+                medium: { android: 60, iphone: 55 },
+                high: { android: 70, iphone: 65 }
+            },
+            sniper: {
+                low: { android: 85, iphone: 80 },
+                medium: { android: 92, iphone: 87 },
+                high: { android: 98, iphone: 93 }
+            },
+            awm: {
+                low: { android: 88, iphone: 83 },
+                medium: { android: 95, iphone: 90 },
+                high: { android: 100, iphone: 95 }
+            },
+            groza: {
+                low: { android: 65, iphone: 60 },
+                medium: { android: 75, iphone: 70 },
+                high: { android: 85, iphone: 80 }
+            },
+            deagle: {
+                low: { android: 55, iphone: 50 },
+                medium: { android: 65, iphone: 60 },
+                high: { android: 75, iphone: 70 }
+            }
+        };
+
+        // Nombres de armas en español
+        const weaponNames = {
+            ak47: 'AK47',
+            m14: 'M14',
+            scar: 'SCAR',
+            mp40: 'MP40',
+            shotgun: 'Escopeta',
+            sniper: 'Francotirador',
+            awm: 'AWM',
+            groza: 'GROZA',
+            deagle: 'Deagle'
+        };
+
+        // Formulario submit
+        document.getElementById('sensibilityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generarSensibilidades();
+        });
+
+        function generarSensibilidades() {
+            const platform = document.getElementById('platform').value;
+            const weapon = document.getElementById('weapon').value;
+            const sensitivity = document.querySelector('input[name="sensitivity"]:checked').value;
+            const useDpi = document.getElementById('useDpi').checked;
+            const dpiValue = document.getElementById('dpiValue').value;
+
+            if (!platform || !weapon || !sensitivity) {
+                alert('Por favor completa todos los campos requeridos');
+                return;
+            }
+
+            const baseValue = sensibilityData[weapon][sensitivity][platform];
+            
+            // Ajustar según DPI
+            let finalValue = baseValue;
+            let dpiInfo = '';
+            
+            if (useDpi && dpiValue) {
+                const dpiAdjustment = (dpiValue - 400) / 100; // Ajuste proporcional
+                finalValue = Math.max(1, Math.min(100, baseValue - (dpiAdjustment * 2)));
+                dpiInfo = ` (DPI: ${dpiValue})`;
+            }
+
+            // Generar recomendaciones adicionales
+            const platformName = platform === 'android' ? '📱 Android' : '🍎 iPhone';
+            const sensitivityName = sensitivity === 'low' ? 'Baja 🎯' : sensitivity === 'medium' ? 'Media ⚡' : 'Alta 🚀';
+
+            let resultHTML = `
+                <div class="sensibility-item">
+                    <strong>Plataforma:</strong>
+                    ${platformName}
+                </div>
+                <div class="sensibility-item">
+                    <strong>Arma:</strong>
+                    ${weaponNames[weapon]}
+                </div>
+                <div class="sensibility-item">
+                    <strong>Sensibilidad Base:</strong>
+                    ${sensitivityName}
+                </div>
+                <div class="sensibility-item">
+                    <strong>🎯 Sensibilidad Recomendada:</strong>
+                    <div class="sensibility-value">${Math.round(finalValue)}${dpiInfo}</div>
+                </div>
+            `;
+
+            // Agregar configuraciones alternas
+            const otherPlatform = platform === 'android' ? 'iphone' : 'android';
+            const otherValue = sensibilityData[weapon][sensitivity][otherPlatform];
+            const otherPlatformName = otherPlatform === 'android' ? '📱 Android' : '🍎 iPhone';
+
+            resultHTML += `
+                <div class="sensibility-item" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                    <strong>💡 Recomendación para ${otherPlatformName}:</strong>
+                    <div class="sensibility-value" style="color: #ff9800;">${Math.round(otherValue)}</div>
+                </div>
+            `;
+
+            // Tips según sensibilidad
+            const tips = getTips(sensitivity, weapon, platform);
+            resultHTML += `
+                <div class="sensibility-item" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+                    <strong>💪 Tips para mejor puntería:</strong>
+                    <ul style="margin-left: 20px; margin-top: 8px;">
+                        ${tips.map(tip => `<li style="font-size: 12px; margin-bottom: 4px;">${tip}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('resultContent').innerHTML = resultHTML;
+            document.getElementById('result').classList.add('show');
+
+            // Guardar en localStorage
+            localStorage.setItem('lastConfig', JSON.stringify({
+                platform, weapon, sensitivity, useDpi, dpiValue, finalValue
+            }));
+        }
+
+        function getTips(sensitivity, weapon, platform) {
+            const tips = {
+                low: [
+                    '✓ Ideal para disparos lejanos y francotiradores',
+                    '✓ Mejor control de retroceso',
+                    '✓ Practica movimientos suaves',
+                    '✓ Calibra en Training Ground primero'
+                ],
+                medium: [
+                    '✓ Equilibrio entre velocidad y precisión',
+                    '✓ Bueno para combate medio-corto',
+                    '✓ Requiere entrenamiento regular',
+                    '✓ Ideal para juego competitivo'
+                ],
+                high: [
+                    '✓ Máxima velocidad de apuntamiento',
+                    '✓ Excelente para combates cercanos',
+                    '✓ Requiere buena fluidez y reflejos',
+                    '✓ Practica constantemente para mejores resultados'
+                ]
+            };
+
+            return tips[sensitivity] || tips.medium;
+        }
+
+        function copiarResultado() {
+            const platform = document.getElementById('platform').value;
+            const weapon = document.getElementById('weapon').value;
+            const sensitivity = document.querySelector('input[name="sensitivity"]:checked').value;
+            const finalValue = Math.round(sensibilityData[weapon][sensitivity][platform]);
+
+            const texto = `
+🔴 CONFIGURACIÓN FREE FIRE
+
+📱 Plataforma: ${platform === 'android' ? 'Android' : 'iPhone'}
+🔫 Arma: ${weaponNames[weapon]}
+⚡ Sensibilidad: ${sensitivity}
+🎯 Valor: ${finalValue}
+
+Generado con: Generador de Sensibilidades Free Fire
+            `;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('✓ Configuración copiada al portapapeles');
+            });
+        }
+
+        // Cargar última configuración si existe
+        window.addEventListener('load', function() {
+            const lastConfig = localStorage.getItem('lastConfig');
+            if (lastConfig) {
+                const config = JSON.parse(lastConfig);
+                document.getElementById('platform').value = config.platform;
+                document.getElementById('weapon').value = config.weapon;
+                document.querySelector(`input[value="${config.sensitivity}"]`).checked = true;
+                if (config.useDpi) {
+                    document.getElementById('useDpi').checked = true;
+                    document.getElementById('dpiGroup').style.display = 'block';
+                    document.getElementById('dpiValue').value = config.dpiValue;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
